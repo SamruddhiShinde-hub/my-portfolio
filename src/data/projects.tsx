@@ -902,8 +902,8 @@ const projects: Project[] = [
     title: "My Portfolio",
     src: "/assets/projects-screenshots/myportfolio/1.png",
     screenshots: ["1.png"],
-    live: "http://localhost:3000",
-    github: "",
+    live: "https://samruddhishinde-gules.vercel.app/",
+    github: "https://github.com/SamruddhiShinde-hub/my-portfolio/",
     skills: {
       frontend: [
         PROJECT_SKILLS.react,
@@ -921,7 +921,7 @@ const projects: Project[] = [
             My Portfolio - A personal portfolio website showcasing my projects, 
             skills, and professional journey in web development.
           </TypographyP>
-          <ProjectsLinks live={this.live} />
+          <ProjectsLinks live={this.live} repo={this.github} />
           <SlideShow images={[`${BASE_PATH}/myportfolio/1.png`]} />
         </div>
       );

@@ -1,52 +1,60 @@
-import { EmailTemplate } from "@/components/email-template";
 import { config } from "@/data/config";
-import { Resend } from "resend";
+import nodemailer from "nodemailer";
 import { z } from "zod";
-
-const resend = new Resend(process.env.RESEND_API_KEY || "dummy_key");
 
 const Email = z.object({
   fullName: z.string().min(2, "Full name is invalid!"),
   email: z.string().email({ message: "Email is invalid!" }),
   message: z.string().min(10, "Message is too short!"),
 });
+
 export async function POST(req: Request) {
   try {
-    // Check if API key is configured
-    if (!process.env.RESEND_API_KEY || process.env.RESEND_API_KEY === "dummy_key") {
-      return Response.json(
-        { error: "Email service is not configured. Please contact via social media." },
-        { status: 503 }
-      );
-    }
-
     const body = await req.json();
     console.log(body);
+    
     const {
       success: zodSuccess,
       data: zodData,
       error: zodError,
     } = Email.safeParse(body);
+    
     if (!zodSuccess)
       return Response.json({ error: zodError?.message }, { status: 400 });
 
-    const { data: resendData, error: resendError } = await resend.emails.send({
-      from: "Porfolio <onboarding@resend.dev>",
-      to: [config.email],
-      subject: "Contact me from portfolio",
-      react: EmailTemplate({
-        fullName: zodData.fullName,
-        email: zodData.email,
-        message: zodData.message,
-      }),
+    // Create transporter with Gmail SMTP
+    const transporter = nodemailer.createTransport({
+      service: "gmail",
+      auth: {
+        user: process.env.GMAIL_USER,
+        pass: process.env.GMAIL_APP_PASSWORD,
+      },
     });
 
-    if (resendError) {
-      return Response.json({ resendError }, { status: 500 });
-    }
+    // Email content
+    const mailOptions = {
+      from: `"Portfolio Contact" <${process.env.GMAIL_USER}>`,
+      to: config.email,
+      subject: `Portfolio Contact from ${zodData.fullName}`,
+      html: `
+        <h2>New Contact Form Submission</h2>
+        <p><strong>Name:</strong> ${zodData.fullName}</p>
+        <p><strong>Email:</strong> ${zodData.email}</p>
+        <p><strong>Message:</strong></p>
+        <p>${zodData.message.replace(/\n/g, '<br>')}</p>
+      `,
+      replyTo: zodData.email,
+    };
 
-    return Response.json(resendData);
+    // Send email
+    await transporter.sendMail(mailOptions);
+
+    return Response.json({ success: true, message: "Email sent successfully!" });
   } catch (error) {
-    return Response.json({ error }, { status: 500 });
+    console.error("Email error:", error);
+    return Response.json(
+      { error: "Failed to send email. Please try again later." },
+      { status: 500 }
+    );
   }
 }
