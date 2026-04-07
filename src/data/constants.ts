@@ -6,7 +6,7 @@ export enum SkillNames {
   // SHELL = "shell",    // +
   PYTHON = "python", // +
   GIT = "git",
-  DOCKER = "docker",
+  // DOCKER = "docker",
   // SELENIUM = "selenium",  // +
   // JENKINS = "jenkins",    // +
   // KUBERNETES = "kubernetes",  // +
