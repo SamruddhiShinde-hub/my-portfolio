@@ -1,16 +1,16 @@
 const config = {
-  title: "Abhijit Zende | AI Enthusiast",
+  title: "Samruddhi Shinde | AI Enthusiast",
   description: {
-    long: "Explore the portfolio of Abhijit, a Computer Science Engineer with 1.5 year experience in Devlopment, DevOps & Database management with hands-on experience in deploying & automating workflows, & collaborating with foreign clients. Strong analytical skills, effective communication, and a team-oriented approach to driving process improvements and delivering results.",
+    long: "Explore the portfolio of Samruddhi, a Computer Science Engineer with 1.5 year experience in Devlopment, DevOps & Database management with hands-on experience in deploying & automating workflows, & collaborating with foreign clients. Strong analytical skills, effective communication, and a team-oriented approach to driving process improvements and delivering results.",
     short:
-      "Discover the portfolio of Abhijit, a AI enthusiast solving real life problems in DevOps and Development.",
+      "Discover the portfolio of Samruddhi, a AI enthusiast solving real life problems in DevOps and Development.",
   },
   keywords: [
-    "Abhijit",
-    "Abhijit Zende",
-    "abhijitzende",
-    "abhijitzende.com",
-    "Abhijit Zende portfolio",
+    "Samruddhi",
+    "Samruddhi Shinde",
+    "samruddhishinde",
+    "samruddhishinde.com",
+    "Samruddhi Shinde portfolio",
     "portfolio",
     "DevOps",
     "Devlopment",
@@ -30,19 +30,16 @@ const config = {
     "AIOps",
     "Azure",
   ],
-  author: "Abhijit Zende",
-  email: "abhijitzende75@gmail.com",
-  site: "https://abhijitzende.com",
+  author: "Samruddhi Shinde",
+  email: "samruddhishinde999@gmail.com",
+  site: "https://samruddhishinde.com",
 
   get ogImg() {
     return this.site + "/assets/seo/og-image.png";
   },
   social: {
-    twitter: "https://x.com/_Abhi_Speaks/",
-    linkedin: "https://www.linkedin.com/in/zende-abhijit/",
-    instagram: "https://www.instagram.com/_.celestial_abhi._/",
-    facebook: "https://www.facebook.com/profile.php?id=100010029821759",
-    github: "https://github.com/Abhiz2411/",
+    linkedin: "https://www.linkedin.com/in/samruddhi-shinde-305085268/",
+    github: "https://github.com/SamruddhiShinde-hub",
   },
 };
 export { config };

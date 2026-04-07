@@ -1,11 +1,11 @@
 const footer: { title: string; href: string }[] = [
   {
     title: "Blog",
-    href: "https://abhijitzende.hashnode.dev/",
+    href: "https://samruddhishinde.hashnode.dev/",
   },
   {
     title: "Newsletter",
-    href: "https://abhijitzende.hashnode.dev/",
+    href: "https://samruddhishinde.hashnode.dev/",
   },
 ];
 

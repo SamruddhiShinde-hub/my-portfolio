@@ -206,6 +206,23 @@ const AnimatedBackground = () => {
     handleGsapAnimations();
     setBongoAnimation(getBongoAnimation());
     setKeycapAnimtations(getKeycapsAnimation());
+
+    // Hide vim keycap and move vercel to its position
+    if (splineApp) {
+      const vimKeycap = splineApp.findObjectByName("vim");
+      const vercelKeycap = splineApp.findObjectByName("vercel");
+      if (vimKeycap && vercelKeycap) {
+        // Store vim's position before hiding
+        const vimPosition = { ...vimKeycap.position };
+        vimKeycap.visible = false;
+        // Move vercel to vim's position
+        vercelKeycap.position.x = vimPosition.x;
+        vercelKeycap.position.y = vimPosition.y;
+        vercelKeycap.position.z = vimPosition.z;
+      } else if (vimKeycap) {
+        vimKeycap.visible = false;
+      }
+    }
   }, [splineApp]);
 
   useEffect(() => {
@@ -242,7 +259,7 @@ const AnimatedBackground = () => {
           delay: 2.5,
           immediateRender: false,
           paused: true,
-        }
+        },
       );
       if (activeSection === "hero") {
         rotateKeyboard.restart();
@@ -308,7 +325,7 @@ const AnimatedBackground = () => {
         z: keyboardStates(activeSection).scale.z,
         duration: 1.5,
         ease: "elastic.out(1, 0.6)",
-      }
+      },
     );
     // }
 
@@ -317,14 +334,14 @@ const AnimatedBackground = () => {
     await sleep(900);
     if (isMobile) {
       const mobileKeyCaps = allObjects.filter(
-        (obj) => obj.name === "keycap-mobile"
+        (obj) => obj.name === "keycap-mobile",
       );
       mobileKeyCaps.forEach((keycap, idx) => {
         keycap.visible = true;
       });
     } else {
       const desktopKeyCaps = allObjects.filter(
-        (obj) => obj.name === "keycap-desktop"
+        (obj) => obj.name === "keycap-desktop",
       );
       desktopKeyCaps.forEach(async (keycap, idx) => {
         await sleep(idx * 70);
@@ -338,7 +355,7 @@ const AnimatedBackground = () => {
       gsap.fromTo(
         keycap.position,
         { y: 200 },
-        { y: 50, duration: 0.5, delay: 0.1, ease: "bounce.out" }
+        { y: 50, duration: 0.5, delay: 0.1, ease: "bounce.out" },
       );
     });
   };
@@ -568,7 +585,7 @@ const AnimatedBackground = () => {
             setSplineApp(app);
             bypassLoading();
           }}
-          scene="/assets/skills-keyboard.spline"
+          scene='/assets/skills-keyboard.spline'
         />
       </Suspense>
     </>

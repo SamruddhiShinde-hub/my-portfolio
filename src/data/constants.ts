@@ -1,10 +1,10 @@
 // thoda zada ts ho gya idhar
 export enum SkillNames {
-  AWS = "aws",
+  // AWS = "aws",
   // AZURE = "azure",    // +
-  LINUX = "linux",    
+  LINUX = "linux",
   // SHELL = "shell",    // +
-  // PYTHON = "python",  // +
+  PYTHON = "python", // +
   GIT = "git",
   DOCKER = "docker",
   // SELENIUM = "selenium",  // +
@@ -22,24 +22,24 @@ export enum SkillNames {
   HTML = "html",
   CSS = "css",
   JS = "js",
-  // JAVA = "java",    // +
+  JAVA = "java", // +
   POSTGRES = "postgres",
-  TS = "ts",         //
-  REACT = "react",   //
-  VUE = "vue",       //
+  TS = "ts", //
+  REACT = "react", //
+  VUE = "vue", //
   NEXTJS = "nextjs", //
-  TAILWIND = "tailwind",  //
-  NODEJS = "nodejs",  //
-  EXPRESS = "express",  // 
-  MONGODB = "mongodb",  //
-  GITHUB = "github",   //
-  PRETTIER = "prettier",  //
-  NPM = "npm",       //
-  FIREBASE = "firebase",  //
-  WORDPRESS = "wordpress",  //
-  NGINX = "nginx",      //
-  VIM = "vim",           //
-  VERCEL = "vercel",    //
+  TAILWIND = "tailwind", //
+  NODEJS = "nodejs", //
+  EXPRESS = "express", //
+  MONGODB = "mongodb", //
+  GITHUB = "github", //
+  PRETTIER = "prettier", //
+  NPM = "npm", //
+  FIREBASE = "firebase", //
+  WORDPRESS = "wordpress", //
+  NGINX = "nginx", //
+  // VIM = "vim", //
+  VERCEL = "vercel", //
 }
 export type Skill = {
   id: number;
@@ -207,13 +207,13 @@ using use = useUsing("use")`,
     color: "#fff",
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linux/linux-original.svg",
   },
-  [SkillNames.DOCKER]: {
+  [SkillNames.PYTHON]: {
     id: 20,
-    name: "docker",
-    label: "Docker",
-    shortDescription: "The best containerization! 🐳🔥",
-    color: "#2496ed",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
+    name: "python",
+    label: "Python",
+    shortDescription: "The coding equivalent of 'It just works' 🐍📜",
+    color: "#3776ab",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg",
   },
   [SkillNames.NGINX]: {
     id: 21,
@@ -223,22 +223,13 @@ using use = useUsing("use")`,
     color: "#008000",
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nginx/nginx-original.svg",
   },
-  [SkillNames.AWS]: {
+  [SkillNames.JAVA]: {
     id: 22,
-    name: "aws",
-    label: "AWS",
-    shortDescription:
-      "always extra, making everything more complicated, period! 🌐👨‍💻",
-    color: "#ff9900",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/aws/aws-original.svg",
-  },
-  [SkillNames.VIM]: {
-    id: 23,
     name: "vim",
-    label: "Vim",
-    shortDescription: "exit? In this economy? Ight, imma head out! 🚪🏃",
-    color: "#e34c26",
-    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vim/vim-original.svg",
+    label: "Java",
+    shortDescription: "The OG workhorse that runs enterprise apps ☕🏋️",
+    color: "#007396",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg",
   },
   [SkillNames.VERCEL]: {
     id: 24,
@@ -250,7 +241,6 @@ using use = useUsing("use")`,
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vercel/vercel-original.svg",
   },
 };
-
 
 // +
 // export const SKILLS: Record<SkillNames, Skill> = {
@@ -470,4 +460,3 @@ export const themeDisclaimers = {
     "Dark mode on! Finally, someone who understands true sophistication.",
   ],
 };
-
