@@ -897,6 +897,7 @@ const projects: Project[] = [
   },
   {
     // 04. My Portfolio project
+    // 04. My Portfolio project
     id: "myportfolio",
     category: "Portfolio",
     title: "My Portfolio",
