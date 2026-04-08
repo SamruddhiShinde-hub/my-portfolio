@@ -12,13 +12,13 @@ export async function POST(req: Request) {
   try {
     const body = await req.json();
     console.log(body);
-    
+
     const {
       success: zodSuccess,
       data: zodData,
       error: zodError,
     } = Email.safeParse(body);
-    
+
     if (!zodSuccess)
       return Response.json({ error: zodError?.message }, { status: 400 });
 
@@ -41,7 +41,7 @@ export async function POST(req: Request) {
         <p><strong>Name:</strong> ${zodData.fullName}</p>
         <p><strong>Email:</strong> ${zodData.email}</p>
         <p><strong>Message:</strong></p>
-        <p>${zodData.message.replace(/\n/g, '<br>')}</p>
+        <p>${zodData.message.replace(/\n/g, "<br>")}</p>
       `,
       replyTo: zodData.email,
     };
@@ -49,12 +49,15 @@ export async function POST(req: Request) {
     // Send email
     await transporter.sendMail(mailOptions);
 
-    return Response.json({ success: true, message: "Email sent successfully!" });
+    return Response.json({
+      success: true,
+      message: "Email sent successfully!",
+    });
   } catch (error) {
     console.error("Email error:", error);
     return Response.json(
       { error: "Failed to send email. Please try again later." },
-      { status: 500 }
+      { status: 500 },
     );
   }
 }

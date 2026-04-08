@@ -27,12 +27,12 @@ const Index: React.FC<IndexProps> = ({ setIsActive }) => {
   return (
     <motion.div
       variants={height}
-      initial="initial"
-      animate="enter"
-      exit="exit"
+      initial='initial'
+      animate='enter'
+      exit='exit'
       className={styles.nav}
     >
-      <div className={cn(styles.wrapper, 'flex justify-end sm:justify-start')}>
+      <div className={cn(styles.wrapper, "flex justify-end sm:justify-start")}>
         <div className={styles.container}>
           <Body
             links={links}

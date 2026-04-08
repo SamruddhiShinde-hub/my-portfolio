@@ -316,7 +316,7 @@ const PROJECT_SKILLS = {
     title: "n8n",
     bg: "black",
     fg: "white",
-    icon: <span className="font-bold">n8n</span>,
+    icon: <span className='font-bold'>n8n</span>,
   },
 };
 export type Project = {
@@ -847,16 +847,12 @@ const projects: Project[] = [
       return (
         <div>
           <TypographyP className='font-mono '>
-            Bruma Coffee Shop - A modern and elegant coffee shop website 
-            featuring menu items, ambiance showcase, and a seamless user 
+            Bruma Coffee Shop - A modern and elegant coffee shop website
+            featuring menu items, ambiance showcase, and a seamless user
             experience for coffee lovers.
           </TypographyP>
           <ProjectsLinks live={this.live} repo={this.github} />
-          <SlideShow
-            images={[
-              `${BASE_PATH}/brumacoffeeshop/1.png`,
-            ]}
-          />
+          <SlideShow images={[`${BASE_PATH}/brumacoffeeshop/1.png`]} />
         </div>
       );
     },
@@ -871,10 +867,7 @@ const projects: Project[] = [
     live: "https://anandshinde75.github.io/ArthaniWealth/",
     github: "https://github.com/anandshinde75/ArthaniWealth",
     skills: {
-      frontend: [
-        PROJECT_SKILLS.react,
-        PROJECT_SKILLS.github,
-      ],
+      frontend: [PROJECT_SKILLS.react, PROJECT_SKILLS.github],
       backend: [
         PROJECT_SKILLS.node,
         PROJECT_SKILLS.express,
@@ -885,8 +878,8 @@ const projects: Project[] = [
       return (
         <div>
           <TypographyP className='font-mono '>
-            Arthani Wealth - A professional finance and wealth management 
-            website providing investment solutions and financial planning 
+            Arthani Wealth - A professional finance and wealth management
+            website providing investment solutions and financial planning
             services.
           </TypographyP>
           <ProjectsLinks live={this.live} repo={this.github} />
@@ -919,7 +912,7 @@ const projects: Project[] = [
       return (
         <div>
           <TypographyP className='font-mono '>
-            My Portfolio - A personal portfolio website showcasing my projects, 
+            My Portfolio - A personal portfolio website showcasing my projects,
             skills, and professional journey in web development.
           </TypographyP>
           <ProjectsLinks live={this.live} repo={this.github} />

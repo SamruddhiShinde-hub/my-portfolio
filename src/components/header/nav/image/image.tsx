@@ -11,10 +11,15 @@ interface IndexProps {
 }
 
 const Index: React.FC<IndexProps> = ({ src, isActive }) => {
+  // Don't render anything if there's no src
+  if (!src) {
+    return <div className={styles.imageContainer} />;
+  }
+
   return (
     <motion.div
       variants={opacity}
-      initial="initial"
+      initial='initial'
       animate={isActive ? "open" : "closed"}
       className={styles.imageContainer}
     >
@@ -22,7 +27,7 @@ const Index: React.FC<IndexProps> = ({ src, isActive }) => {
         src={src}
         width={400}
         height={400}
-        className="my-32 w-full h-auto object-cover"
+        className='my-32 w-full h-auto object-cover'
         alt={"Image"}
         // priority={true}
       />

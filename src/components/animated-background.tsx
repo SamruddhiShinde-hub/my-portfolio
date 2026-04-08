@@ -214,13 +214,25 @@ const AnimatedBackground = () => {
       const vimKeycap = splineApp.findObjectByName("vim");
       const vercelKeycap = splineApp.findObjectByName("vercel");
       if (vimKeycap && vercelKeycap) {
-        // Store vim's position before hiding
-        const vimPosition = { ...vimKeycap.position };
+        // Store vim's X and Z position (horizontal plane) before hiding
+        const vimX = vimKeycap.position.x;
+        const vimZ = vimKeycap.position.z;
         vimKeycap.visible = false;
         // Move vercel to vim's position
-        vercelKeycap.position.x = vimPosition.x;
-        vercelKeycap.position.y = vimPosition.y;
-        vercelKeycap.position.z = vimPosition.z;
+        vercelKeycap.position.x = vimX;
+        vercelKeycap.position.z = vimZ;
+        
+        // Lock only X and Z position to prevent horizontal movement
+        // Allow Y position to change freely for up/down hover animation
+        const lockInterval = setInterval(() => {
+          if (vercelKeycap) {
+            vercelKeycap.position.x = vimX;
+            vercelKeycap.position.z = vimZ;
+            // Don't lock Y - let it animate up/down on hover
+          }
+        }, 16); // ~60fps
+        
+        return () => clearInterval(lockInterval);
       } else if (vimKeycap) {
         vimKeycap.visible = false;
       }
