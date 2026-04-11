@@ -6,7 +6,7 @@ export enum SkillNames {
   // SHELL = "shell",    // +
   PYTHON = "python", // +
   GIT = "git",
-  // DOCKER = "docker",
+  DOCKER = "docker",
   // SELENIUM = "selenium",  // +
   // JENKINS = "jenkins",    // +
   // KUBERNETES = "kubernetes",  // +
@@ -125,6 +125,15 @@ using use = useUsing("use")`,
     shortDescription: "JavaScript said 'sike, I'm backend now', deadass! 🔙🔚",
     color: "#6cc24a",
     icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nodejs/nodejs-original.svg",
+  },
+  [SkillNames.DOCKER]: {
+    id: 23,
+    name: "docker",
+    label: "Docker",
+    shortDescription:
+      "containers keep apps portable, reproducible, and deployment-ready 🐳📦",
+    color: "#2496ed",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/docker/docker-original.svg",
   },
   [SkillNames.EXPRESS]: {
     id: 10,

@@ -132,8 +132,15 @@ const AnimatedBackground = () => {
     return STATES[section][isMobile ? "mobile" : "desktop"];
   };
 
+  const getSkillKeyName = (objectName: string) => {
+    const normalizedName = objectName.toLowerCase();
+    if (normalizedName === "aws") return "vercel";
+    return normalizedName;
+  };
+
   const handleMouseHover = (e: SplineEvent) => {
-    if (!splineApp || selectedSkill?.name === e.target.name) return;
+    const skillKeyName = getSkillKeyName(e.target.name);
+    if (!splineApp || selectedSkill?.name === skillKeyName) return;
 
     if (e.target.name === "body" || e.target.name === "platform") {
       setSelectedSkill(null);
@@ -142,8 +149,8 @@ const AnimatedBackground = () => {
         splineApp.setVariable("desc", "");
       }
     } else {
-      if (!selectedSkill || selectedSkill.name !== e.target.name) {
-        const skill = SKILLS[e.target.name as SkillNames];
+      if (!selectedSkill || selectedSkill.name !== skillKeyName) {
+        const skill = SKILLS[skillKeyName as SkillNames];
         if (skill) {
           setSelectedSkill(skill);
         }
@@ -209,32 +216,42 @@ const AnimatedBackground = () => {
     setBongoAnimation(getBongoAnimation());
     setKeycapAnimtations(getKeycapsAnimation());
 
-    // Hide vim keycap and move vercel to its position
+    // Hide AWS keycap and move Vercel to AWS slot (fallback to vim slot)
     if (splineApp) {
+      const awsKeycap =
+        splineApp.findObjectByName("aws") ??
+        splineApp.findObjectByName("AWS");
       const vimKeycap = splineApp.findObjectByName("vim");
       const vercelKeycap = splineApp.findObjectByName("vercel");
-      if (vimKeycap && vercelKeycap) {
-        // Store vim's X and Z position (horizontal plane) before hiding
-        const vimX = vimKeycap.position.x;
-        const vimZ = vimKeycap.position.z;
-        vimKeycap.visible = false;
-        // Move vercel to vim's position
-        vercelKeycap.position.x = vimX;
-        vercelKeycap.position.z = vimZ;
+      const targetSlot = awsKeycap ?? vimKeycap;
+
+      if (targetSlot && vercelKeycap) {
+        // Store target slot X and Z position (horizontal plane) before hiding
+        const targetX = targetSlot.position.x;
+        const targetZ = targetSlot.position.z;
+
+        // Hide legacy keycaps now replaced by Vercel
+        if (awsKeycap) awsKeycap.visible = false;
+        if (vimKeycap) vimKeycap.visible = false;
+
+        // Move Vercel to target slot position
+        vercelKeycap.position.x = targetX;
+        vercelKeycap.position.z = targetZ;
         
         // Lock only X and Z position to prevent horizontal movement
         // Allow Y position to change freely for up/down hover animation
         const lockInterval = setInterval(() => {
           if (vercelKeycap) {
-            vercelKeycap.position.x = vimX;
-            vercelKeycap.position.z = vimZ;
+            vercelKeycap.position.x = targetX;
+            vercelKeycap.position.z = targetZ;
             // Don't lock Y - let it animate up/down on hover
           }
         }, 16); // ~60fps
         
         return () => clearInterval(lockInterval);
-      } else if (vimKeycap) {
-        vimKeycap.visible = false;
+      } else if (awsKeycap || vimKeycap) {
+        if (awsKeycap) awsKeycap.visible = false;
+        if (vimKeycap) vimKeycap.visible = false;
       }
     }
   }, [splineApp]);
@@ -382,7 +399,8 @@ const AnimatedBackground = () => {
     });
     splineApp.addEventListener("keyDown", (e) => {
       if (!splineApp) return;
-      const skill = SKILLS[e.target.name as SkillNames];
+      const skillKeyName = getSkillKeyName(e.target.name);
+      const skill = SKILLS[skillKeyName as SkillNames];
       if (skill) {
         setSelectedSkill(skill);
         splineApp.setVariable("heading", skill.label);

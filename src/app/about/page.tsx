@@ -2,7 +2,6 @@
 import React, { useEffect, useState } from "react";
 import { DiMongodb, DiNginx, DiNpm, DiPostgresql, DiVim } from "react-icons/di";
 import {
-  FaAws,
   FaCss3,
   FaDocker,
   FaEnvelope,
@@ -195,12 +194,6 @@ const TOOLS = [
     color: "#2C8EBB",
   },
   {
-    name: "Vercel",
-    content: "Next.js is a React framework for production",
-    icon: <SiVercel size={"50px"} color='#fff' />,
-    color: "#000000",
-  },
-  {
     name: "Linux",
     content: "Next.js is a React framework for production",
     icon: <FaLinux size={"50px"} color='#fff' />,
@@ -220,9 +213,9 @@ const TOOLS = [
     color: "#000000",
   },
   {
-    name: "AWS",
+    name: "Vercel",
     content: "Next.js is a React framework for production",
-    icon: <FaAws size={"50px"} color='#3f51b5' />,
+    icon: <SiVercel size={"50px"} color='#fff' />,
     color: "#000000",
   },
 ];
