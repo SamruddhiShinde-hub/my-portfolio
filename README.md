@@ -1,5 +1,3 @@
-![Portfolio Preview](https://github.com/SamruddhiShinde-hub/my-portfolio/blob/main/public/assets/seo/og-image.png?raw=true)
-
 # 🚀 Samruddhi's Portfolio Website
 
 Welcome to the repository for my personal portfolio website! 🎉 This project is a culmination of creativity, technology, and my dedication to showcasing my skills, projects, and personality in a visually stunning and interactive manner.
