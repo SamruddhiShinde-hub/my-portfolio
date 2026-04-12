@@ -6,10 +6,6 @@ Welcome to the repository for my personal portfolio website! 🎉 This project i
 
 ### Live preview: https://samruddhishinde-gules.vercel.app/
 
-![Preview](https://github.com/SamruddhiShinde-hub/my-portfolio/blob/main/public/assets/preview_video.gif?raw=true)
-
-https://github.com/SamruddhiShinde-hub/my-portfolio/blob/main/preview_video.mp4
-
 This project is **forked and customized** from the amazing work of [Abhiz2411](https://github.com/Abhiz2411/3D-interactive-portfolio) and inspired by [Naresh Khatri](https://github.com/Naresh-Khatri/Portfolio). Their innovative approach to web design and attention to detail has been a huge influence. Thank you! 🙏
 
 ## 🔥 Features
